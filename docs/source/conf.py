@@ -19,7 +19,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = u'Userspace'
+project = u'userspace'
 copyright = u'2020, Jeremy Iverson'
 author = u'Jeremy Iverson'
 
@@ -31,6 +31,7 @@ release = u'0.0.0'
 
 # -- General configuration ---------------------------------------------------
 
+import sphinx.ext.todo
 import sphinx_rtd_theme
 
 # If your documentation needs a minimal Sphinx version, state it here.
@@ -41,8 +42,12 @@ import sphinx_rtd_theme
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
+    'sphinx.ext.todo',
     'sphinx_rtd_theme',
 ]
+
+# Enable todo output
+todo_include_todos = True
 
 # Add any paths that contain templates here, relative to this directory.
 # templates_path = ['_templates']
@@ -104,7 +109,7 @@ html_theme = "sphinx_rtd_theme"
 # -- Options for HTMLHelp output ---------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'Userspacedoc'
+htmlhelp_basename = 'userspacedoc'
 
 
 # -- Options for LaTeX output ------------------------------------------------
@@ -131,7 +136,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'Userspace.tex', u'Userspace Documentation',
+    (master_doc, 'userspace.tex', u'userspace Documentation',
      u'Jeremy Iverson', 'manual'),
 ]
 
@@ -141,7 +146,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'userspace', u'Userspace Documentation',
+    (master_doc, 'userspace', u'userspace Documentation',
      [author], 1)
 ]
 
@@ -152,8 +157,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'Userspace', u'Userspace Documentation',
-     author, 'Userspace', 'One line description of project.',
+    (master_doc, 'userspace', u'userspace Documentation',
+     author, 'userspace', 'One line description of project.',
      'Miscellaneous'),
 ]
 
