@@ -76,5 +76,56 @@ command is functionally equivalent to::
 ``scp``
 -------
 
-``rsync``
----------
+Occasionally are purpose for remote access is not to login to a remote machine
+and execute commands, but rather, to copy files to or from the remote machine.
+
+With the :ref:`cp` command, we copy a file or directory on our local machine,
+but we could not copy it from one machine to another. The ``scp`` command can
+copy files and directories between machines.
+
+For instance, we can copy ``myfile`` to our home directory on
+``ssh.csbsju.edu``::
+
+  $ scp myfile jiverson002@ssh.csbsju.edu:
+
+The ``scp`` command expects the path on the remote machine where the file should
+be copied to be given after the colon at the end of the command. When no path is
+specified, the user's home directory is assumed. Absolute and relative paths are
+allowed here, with relative paths always being relative to the user's home
+directory.
+
+.. warning::
+  As with the :ref:`cp` command, it is possible to **overwrite** a file if you
+  are not careful about the filename you are using as the target of the
+  operation. For instance, if ``myfile`` already existed in the user's home
+  directory on ``ssh.csbsju.edu``, its content would be completely replaced by
+  the content of ``myfile`` from the local machine.
+
+Had we wanted to copy the file to ``/usr/share``, we could do that, assuming
+that we have permission to write to that directory::
+
+  $ scp myfile jiverson002@ssh.csbsju.edu:/usr/share
+
+Likewise, we can copy a file from a remote machine to our local machine with the
+same constraints. To copy the file ``afile`` in the user's home directory on ``ssh.csbsju.edu`` to out current working directory on the local machine::
+
+  $ scp jiverson002@ssh.csbsju.edu:afile ./
+
+As with the :ref:`cp` command, in order to copy directories, you must include
+the ``-r`` option to the command. For instance, to copy the ``mydir`` directory
+and all of its contents to ``ssh.csbsju.edu``, we could type::
+
+  $ scp -r mydir jiverson002@ssh.csbsju.edu:
+
+Unlike with files, with which an existing destination would lead to an
+overwrite, if the target is an *existing directory*, the file or directory is
+copied *into* the target::
+
+  $ scp myfile jiverson002@ssh.csbsju.edu:mydir
+
+This will create a new copy of ``myfile`` and place it inside of the ``mydir``
+on ``ssh.csbsju.edu``.
+
+..
+  ``rsync``
+  ---------

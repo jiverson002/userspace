@@ -166,6 +166,8 @@ So to rename the ``test`` directory to ``testing``, we could type::
   are moving. There is no way to recover the previous file if you accidentally
   overwrite it.
 
+.. _cp:
+
 ``cp``
 ------
 With the ``mv`` command, we could move or rename a file or directory, but we
@@ -191,7 +193,7 @@ directory’s contents. This option is necessary with directories, regardless of
 whether the directory is empty.
 
 For instance, to copy the ``some`` directory structure to a new structure called
-again, we could type::
+``again``, we could type::
 
   $ cp -r some again
 
@@ -201,7 +203,7 @@ copied *into* the target::
 
   $ cp file1 again
 
-This will create a new copy of ``file1`` and place it inside of the again
+This will create a new copy of ``file1`` and place it inside of the ``again``
 directory.
 
 ``rm``
