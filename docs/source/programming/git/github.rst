@@ -131,7 +131,11 @@ that we are working in the directory of the repository. Be sure to use the
 actual name of the repository (such as ``cloud_haiku``) to change into that
 directory.
 
+<<<<<<< HEAD
 .. code-block::
+=======
+.. code-block:: none
+>>>>>>> topic/git
 
   $ cd repository
 
@@ -139,7 +143,11 @@ Now, we'll create our new branch with the ``git branch`` command. Make sure you
 name it descriptively so that others working on the project understand what you
 are working on.
 
+<<<<<<< HEAD
 .. code-block::
+=======
+.. code-block:: none
+>>>>>>> topic/git
 
   $ git branch new-branch
 
@@ -314,7 +322,11 @@ Next, we'll specify a new remote upstream repository for us to sync with the
 fork. This will be the original repository that we forked from. We'll do this
 with the ``git remote add`` command.
 
+<<<<<<< HEAD
 .. code-block::
+=======
+.. code-block:: none
+>>>>>>> topic/git
 
   $ git remote add upstream https://github.com/original-owner-username/original-repository.git
 

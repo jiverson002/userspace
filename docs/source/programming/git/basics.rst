@@ -33,14 +33,22 @@ Set Up and Initialization
 Check your Git version with the following command, which will also confirm that
 Git is installed.
 
+<<<<<<< HEAD
 .. code-block::
+=======
+.. code-block:: none
+>>>>>>> topic/git
 
   $ git --version
 
 You can initialize your current working directory as a Git repository with
 ``init``.
 
+<<<<<<< HEAD
 .. code-block::
+=======
+.. code-block:: none
+>>>>>>> topic/git
 
   $ git init
 
@@ -48,26 +56,42 @@ To copy an existing Git repository hosted remotely, you'll use ``git clone``
 with the repo's URL or server location (in the latter case you will use
 ``ssh``).
 
+<<<<<<< HEAD
 .. code-block::
+=======
+.. code-block:: none
+>>>>>>> topic/git
 
   $ git clone https://www.github.com/username/repo-name
 
 Show your current Git directory's remote repository.
 
+<<<<<<< HEAD
 .. code-block::
+=======
+.. code-block:: none
+>>>>>>> topic/git
 
   $ git remote
 
 For a more verbose output, use the ``-v`` flag.
 
+<<<<<<< HEAD
 .. code-block::
+=======
+.. code-block:: none
+>>>>>>> topic/git
 
   $ git remote -v
 
 Add the Git upstream, which can be a URL or can be hosted on a server (in the
 latter case, connect with ``ssh``).
 
+<<<<<<< HEAD
 .. code-block::
+=======
+.. code-block:: none
+>>>>>>> topic/git
 
   $ git remote add upstream https://www.github.com/username/repo-name
 
@@ -80,7 +104,11 @@ considered to be a staged file.
 Check the status of your Git repository, including files added that are not
 staged, and files that are staged.
 
+<<<<<<< HEAD
 .. code-block::
+=======
+.. code-block:: none
+>>>>>>> topic/git
 
   $ git status
 
@@ -90,21 +118,33 @@ the next commit, you must run ``add`` again.
 
 You can specify the specific file with ``add``.
 
+<<<<<<< HEAD
 .. code-block::
+=======
+.. code-block:: none
+>>>>>>> topic/git
 
   $ git add my_script.py
 
 With ``.`` you can add all files in the current directory including files that
 begin with a ``.``.
 
+<<<<<<< HEAD
 .. code-block::
+=======
+.. code-block:: none
+>>>>>>> topic/git
 
     git add .
 
 You can remove a file from staging while retaining changes within your working
 directory with ``reset``.
 
+<<<<<<< HEAD
 .. code-block::
+=======
+.. code-block:: none
+>>>>>>> topic/git
 
   $ git reset my_script.py
 
@@ -117,20 +157,32 @@ record changes you have made to the repository.
 To commit staged files, you'll run the ``commit`` command with your meaningful
 commit message so that you can track commits.
 
+<<<<<<< HEAD
 .. code-block::
+=======
+.. code-block:: none
+>>>>>>> topic/git
 
   $ git commit -m "Commit message"
 
 You can condense staging all tracked files with committing them in one step.
 
+<<<<<<< HEAD
 .. code-block::
+=======
+.. code-block:: none
+>>>>>>> topic/git
 
   $ git commit -am "Commit message"
 
 If you need to modify your commit message, you can do so with the ``--amend``
 flag.
 
+<<<<<<< HEAD
 .. code-block::
+=======
+.. code-block:: none
+>>>>>>> topic/git
 
   $ git commit --amend -m "New commit message"
 
@@ -145,66 +197,106 @@ can learn more about branches by reading the `Git branch documentation
 List all current branches with the ``branch`` command. An asterisk (``*``) will
 appear next to your currently active branch.
 
+<<<<<<< HEAD
 .. code-block::
+=======
+.. code-block:: none
+>>>>>>> topic/git
 
   $ git branch
 
 Create a new branch. You will remain on your currently active branch until you
 switch to the new one.
 
+<<<<<<< HEAD
 .. code-block::
+=======
+.. code-block:: none
+>>>>>>> topic/git
 
   $ git branch new-branch
 
 Switch to any existing branch and check it out into your current working
 directory.
 
+<<<<<<< HEAD
 .. code-block::
+=======
+.. code-block:: none
+>>>>>>> topic/git
 
   $ git checkout another-branch
 
 You can consolidate the creation and checkout of a new branch by using the
 ``-b`` flag.
 
+<<<<<<< HEAD
 .. code-block::
+=======
+.. code-block:: none
+>>>>>>> topic/git
 
   $ git checkout -b new-branch
 
 Rename your branch name.
 
+<<<<<<< HEAD
 .. code-block::
+=======
+.. code-block:: none
+>>>>>>> topic/git
 
   $ git branch -m current-branch-name new-branch-name
 
 Merge the specified branch's history into the one you're currently working in.
 
+<<<<<<< HEAD
 .. code-block::
+=======
+.. code-block:: none
+>>>>>>> topic/git
 
   $ git merge branch-name
 
 Abort the merge, in case there are conflicts.
 
+<<<<<<< HEAD
 .. code-block::
+=======
+.. code-block:: none
+>>>>>>> topic/git
 
   $ git merge --abort
 
 You can also select a particular commit to merge with ``cherry-pick`` with the
 string that references the specific commit.
 
+<<<<<<< HEAD
 .. code-block::
+=======
+.. code-block:: none
+>>>>>>> topic/git
 
   $ git cherry-pick f7649d0
 
 When you have merged a branch and no longer need the branch, you can delete it.
 
+<<<<<<< HEAD
 .. code-block::
+=======
+.. code-block:: none
+>>>>>>> topic/git
 
   $ git branch -d branch-name
 
 If you have not merged a branch to master, but are sure you want to delete it,
 you can **force** delete a branch.
 
+<<<<<<< HEAD
 .. code-block::
+=======
+.. code-block:: none
+>>>>>>> topic/git
 
   $ git branch -D branch-name
 
@@ -214,25 +306,41 @@ Collaborate and update
 To download changes from another repository, such as the remote upstream, you'll
 use ``fetch``.
 
+<<<<<<< HEAD
 .. code-block::
+=======
+.. code-block:: none
+>>>>>>> topic/git
 
   $ git fetch upstream
 
 Merge the fetched commits.
 
+<<<<<<< HEAD
 .. code-block::
+=======
+.. code-block:: none
+>>>>>>> topic/git
 
   $ git merge upstream/master
 
 Push or transmit your local branch commits to the remote repository branch.
 
+<<<<<<< HEAD
 .. code-block::
+=======
+.. code-block:: none
+>>>>>>> topic/git
 
   $ git push origin master
 
 Fetch and merge any commits from the tracking remote branch.
 
+<<<<<<< HEAD
 .. code-block::
+=======
+.. code-block:: none
+>>>>>>> topic/git
 
   $ git pull
 
@@ -241,35 +349,55 @@ Inspecting
 
 Display the commit history for the currently active branch.
 
+<<<<<<< HEAD
 .. code-block::
+=======
+.. code-block:: none
+>>>>>>> topic/git
 
   $ git log
 
 Show the commits that changed a particular file. This follows the file
 regardless of file renaming.
 
+<<<<<<< HEAD
 .. code-block::
+=======
+.. code-block:: none
+>>>>>>> topic/git
 
   $ git log --follow my_script.py
 
 Show the commits that are on one branch and not on the other. This will show
 commits on a-branch that are not on b-branch.
 
+<<<<<<< HEAD
 .. code-block::
+=======
+.. code-block:: none
+>>>>>>> topic/git
 
   $ git log a-branch..b-branch
 
 Look at reference logs (``reflog``) to see when the tips of branches and other
 references were last updated within the repository.
 
+<<<<<<< HEAD
 .. code-block::
+=======
+.. code-block:: none
+>>>>>>> topic/git
 
   $ git reflog
 
 Show any object in Git via its commit string or hash in a more human-readable
 format.
 
+<<<<<<< HEAD
 .. code-block::
+=======
+.. code-block:: none
+>>>>>>> topic/git
 
   $ git show de754f5
 
@@ -282,19 +410,31 @@ can read more fully about it through the `Git diff documentation
 
 Compare modified files that are on the staging area.
 
+<<<<<<< HEAD
 .. code-block::
+=======
+.. code-block:: none
+>>>>>>> topic/git
 
   $ git diff --staged
 
 Display the diff of what is in ``a-branch`` but is not in ``b-branch``.
 
+<<<<<<< HEAD
 .. code-block::
+=======
+.. code-block:: none
+>>>>>>> topic/git
 
   $ git diff a-branch..b-branch
 
 Show the diff between two specific commits.
 
+<<<<<<< HEAD
 .. code-block::
+=======
+.. code-block:: none
+>>>>>>> topic/git
 
   $ git diff 61ce3e6..e221d9c
 
@@ -310,13 +450,21 @@ commit.
 
 Stash your current work.
 
+<<<<<<< HEAD
 .. code-block::
+=======
+.. code-block:: none
+>>>>>>> topic/git
 
   $ git stash
 
 See what you currently have stashed.
 
+<<<<<<< HEAD
 .. code-block::
+=======
+.. code-block:: none
+>>>>>>> topic/git
 
   $ git stash list
 
@@ -324,35 +472,55 @@ Your stashes will be named ``stash@{0}``, ``stash@{1}``, and so on.
 
 Show information about a particular stash.
 
+<<<<<<< HEAD
 .. code-block::
+=======
+.. code-block:: none
+>>>>>>> topic/git
 
   $ git stash show stash@{0}
 
 To bring the files in a current stash out of the stash while still retaining the
 stash, use ``apply``.
 
+<<<<<<< HEAD
 .. code-block::
+=======
+.. code-block:: none
+>>>>>>> topic/git
 
   $ git stash apply stash@{0}
 
 If you want to bring files out of a stash, and no longer need the stash, use
 ``pop``.
 
+<<<<<<< HEAD
 .. code-block::
+=======
+.. code-block:: none
+>>>>>>> topic/git
 
   $ git stash pop stash@{0}
 
 If you no longer need the files saved in a particular stash, you can ``drop``
 the stash.
 
+<<<<<<< HEAD
 .. code-block::
+=======
+.. code-block:: none
+>>>>>>> topic/git
 
   $ git stash drop stash@{0}
 
 If you have multiple stashes saved and no longer need to use any of them, you
 can use ``clear`` to remove them.
 
+<<<<<<< HEAD
 .. code-block::
+=======
+.. code-block:: none
+>>>>>>> topic/git
 
   $ git stash clear
 
