@@ -1,8 +1,7 @@
-The following article is a adaptation of `An Introduction to the Linux Terminal
-<https://www.digitalocean.com/community/tutorials/an-introduction-to-the-linux-terminal>`_
-by `Chris Zabriskie <https://www.digitalocean.com/community/users/manicas>`_,
-available under a `Creative Commons Attribution-NonCommercial-ShareAlike 4.0
-International License <https://creativecommons.org/licenses/by-nc-sa/4.0/>`_.
+.. highlight:: none
+
+.. note::
+  The following article is a adaptation of `An Introduction to the Linux Terminal <https://www.digitalocean.com/community/tutorials/an-introduction-to-the-linux-terminal>`_ by `Chris Zabriskie <https://www.digitalocean.com/community/users/manicas>`_, available under a `Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License <https://creativecommons.org/licenses/by-nc-sa/4.0/>`_.
 
 Basics
 ======
@@ -137,10 +136,6 @@ the command. Note how your command prompt's current path has updated.
 
 If you would like, try running the ``ls`` command to see the files that are in
 your new current directory.
-
-.. code-block::bash
-
-  $ ls
 
 With options
 ^^^^^^^^^^^^
