@@ -67,7 +67,8 @@ with more background and depth.
   esse Metellum quam Regulum.
 
   * **Languages**:
-    :doc:`Python <programming/python>`
+    :doc:`Python <programming/python> |
+    :doc:`Ruby <programming/ruby>`
   * **Development tools**:
     :doc:`Git <programming/git>`
 
@@ -76,6 +77,7 @@ with more background and depth.
    :caption: Programming
 
    Python <programming/python>
+   Ruby <programming/ruby>
    Git <programming/git>
 
 Contributing to the documentation
@@ -87,4 +89,4 @@ on `GitHub <https://github.com>`_ at https://github.com/jiverson002/userspace.
 If you are interested in contributing to the project then please fork the
 repository, create an issue, and make a pull request. If any of those things
 sound unfamiliar, then head over to the :doc:`Git documentation
-<programming/git>` and learn more.
+<programming/git>` to learn more.
