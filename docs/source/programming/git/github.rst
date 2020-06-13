@@ -131,7 +131,7 @@ that we are working in the directory of the repository. Be sure to use the
 actual name of the repository (such as ``cloud_haiku``) to change into that
 directory.
 
-.. code-block::
+.. code-block:: none
 
   $ cd repository
 
@@ -139,7 +139,7 @@ Now, we'll create our new branch with the ``git branch`` command. Make sure you
 name it descriptively so that others working on the project understand what you
 are working on.
 
-.. code-block::
+.. code-block:: none
 
   $ git branch new-branch
 
@@ -194,7 +194,7 @@ message in quotes::
 But, unless it is a very minor change, we will more than likely want to include
 a lengthier commit message so that our collaborators are fully up to speed with
 our contribution. To record this larger message, we will run the ``git commit``
-command which will open the default text editor:
+command which will open the default text editor::
 
   $ git commit
 
@@ -314,7 +314,7 @@ Next, we'll specify a new remote upstream repository for us to sync with the
 fork. This will be the original repository that we forked from. We'll do this
 with the ``git remote add`` command.
 
-.. code-block::
+.. code-block:: none
 
   $ git remote add upstream https://github.com/original-owner-username/original-repository.git
 
