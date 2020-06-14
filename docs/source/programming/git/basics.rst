@@ -27,7 +27,7 @@ run::
 You can also read more about Git and look at Git's documentation from the
 `official Git website <https://git-scm.com/>`_.
 
-Set Up and Initialization
+Set up and initialization
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Check your Git version with the following command, which will also confirm that
