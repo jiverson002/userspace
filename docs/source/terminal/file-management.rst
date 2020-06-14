@@ -1,7 +1,7 @@
 .. highlight:: none
 
 .. note::
-  The following article is a adaptation of `Basic Linux Navigation and File Management <https://www.digitalocean.com/community/tutorials/basic-linux-navigation-and-file-management>`_ by `Justin Ellingwood <https://www.digitalocean.com/community/users/jellingwood>`_, available under a `Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License <https://creativecommons.org/licenses/by-nc-sa/4.0/>`_.
+  The following article is an adaptation of `Basic Linux Navigation and File Management <https://www.digitalocean.com/community/tutorials/basic-linux-navigation-and-file-management>`_ by `Justin Ellingwood <https://www.digitalocean.com/community/users/jellingwood>`_, available under a `Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License <https://creativecommons.org/licenses/by-nc-sa/4.0/>`_.
 
 File management
 ===============

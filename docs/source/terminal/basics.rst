@@ -1,18 +1,17 @@
 .. highlight:: none
 
 .. note::
-  The following article is a adaptation of `An Introduction to the Linux Terminal <https://www.digitalocean.com/community/tutorials/an-introduction-to-the-linux-terminal>`_ by `Chris Zabriskie <https://www.digitalocean.com/community/users/manicas>`_, available under a `Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License <https://creativecommons.org/licenses/by-nc-sa/4.0/>`_.
+  The following article is an adaptation of `An Introduction to the Linux Terminal <https://www.digitalocean.com/community/tutorials/an-introduction-to-the-linux-terminal>`_ by `Chris Zabriskie <https://www.digitalocean.com/community/users/manicas>`_, available under a `Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License <https://creativecommons.org/licenses/by-nc-sa/4.0/>`_.
 
 Basics
 ======
 
-This tutorial, which is the first in a series that teaches Linux basics to get
-new users on their feet, covers getting started with the terminal, the Linux
-command line, and executing commands. If you are new to Linux, you will want to
-familiarize yourself with the terminal, as it is the standard way to interact
-with a Linux server. Using the command line may seem like a daunting task but it
-is actually very easy if you start with the basics, and build your skills from
-there.
+This tutorial is intended to teach Linux basics to get new users on their feet.
+It covers getting started with the terminal, the Linux command line, and
+executing commands. If you are new to Linux, you will want to familiarize
+yourself with the terminal, as it is the standard way to interact with a Linux
+machine. Using the command line may seem like a daunting task but it is actually
+very easy if you start with the basics, and build your skills from there.
 
 Let's get started by going over what a terminal emulator is.
 
@@ -22,7 +21,9 @@ Terminal emulator
 A terminal emulator is a program that allows the use of the terminal in a
 graphical environment. As most people use an OS with a graphical user interface
 (GUI) for their day-to-day computer needs, the use of a terminal emulator is a
-necessity for most Linux server users.
+necessity to become a more efficient Linux user. The efficiency and flexibility
+of the terminal is so desirable, that most modern operating systems have some
+terminal emulator available for their platform.
 
 Here are some free, commonly-used terminal emulators by operating system:
 
@@ -35,34 +36,34 @@ work great and are easy to use.
 
 Shell
 -----
+
 In a Linux system, the shell is a command-line interface that interprets a
 user's commands and script files, and tells the server's operating system what
 to do with them. There are several shells that are widely used, such as *Bourne
-shell* (``sh``) and *C shell* (``csh``). Each shell has its own feature set and
-intricacies, regarding how commands are interpreted, but they all feature input
-and output redirection, variables, and condition-testing, among other things.
+shell* (``sh``), *Bourne-Again shell* (``bash``), and *Z shell* (``zsh``). Each
+shell has its own feature set and intricacies, regarding how commands are
+interpreted, but they all feature input and output redirection, variables, and
+condition-testing, among other things.
 
-This tutorial was written using the *Bourne-Again shell*, usually referred to as
-bash, which is the default shell for most Linux distributions, including Ubuntu,
-CentOS, and RedHat.
+This tutorial was written using the *C shell* (``csh``), which is the default
+shell for users of the CSB/SJU Linux systems.
 
 Command prompt
 --------------
-When you first login to a server, you will typically be greeted by the Message
-of the Day (MOTD), which is typically an informational message that includes
-miscellaneous information such as the version of the Linux distribution that the
-server is running. After the MOTD, you will be dropped into the command prompt,
-or shell prompt, which is where you can issue commands to the server.
 
-The information that is presented at the command prompt can be customized by the
-user, but here is an example of the default Ubuntu 14.04 command prompt::
+When you first open a terminal emulator in Linux, you will be dropped into the
+command prompt, or shell prompt, which is where you can issue commands to the
+server. The information that is presented at the command prompt can be
+customized by the user, but here is an example of the default CSB/SJU command
+prompt::
 
-  sammy@webapp:~$
+  [sammy@vplinssh2 5001 ~]$
 
 Here is a breakdown of the composition of the command prompt:
 
 - ``sammy``: The *username* of the current user
-- ``webapp``: The *hostname* of the server
+- ``vplinssh2``: The *hostname* of the server
+- ``5001``: The *event number* of the current history
 - ``~``: The *current directory*. In ``bash``, which is the default shell, the
   ``~``, or tilde, is a special character that expands to the path of the
   current user's *home directory*; in this case, it represents ``/home/sammy``
@@ -70,9 +71,9 @@ Here is a breakdown of the composition of the command prompt:
   which the user's keyboard input will appear
 
 Here is an example of what the command prompt might look like, if logged in as
-root and in the /var/log directory::
+``root`` and in the ``/var/log`` directory::
 
-  root@webapp:/var/log#
+  root@vplinssh2:/var/log#
 
 Note that the symbol that ends the command prompt is a ``#``, which is the
 standard prompt symbol for ``root``. In Linux, the ``root`` user is the
@@ -80,8 +81,16 @@ standard prompt symbol for ``root``. In Linux, the ``root`` user is the
 system-wide administrative functions---it is an unrestricted user that has
 permission to perform any task on a server.
 
+.. note::
+
+  From this point forward and for the entirety of this collection of
+  documentation articles, the command prompt will be shortened to a single
+  ``$``, except when there is a specific reason to show a more verbose
+  command prompt.
+
 Executing commands
 ------------------
+
 Commands can be issued at the command prompt by specifying the name of an
 executable file, which can be a binary program or a script. There are many
 standard Linux commands and utilities that are installed with the OS, that allow
@@ -101,11 +110,9 @@ commands!
 We will run through a few examples that will cover the basics of executing
 commands.
 
-**Note**: If you're not already logged-in to a Linux server, now is a good time
-to log in.
-
 Without arguments or options
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 To execute a command without any arguments or options, simply type in the name
 of the command and hit ``RETURN``.
 
@@ -123,6 +130,7 @@ directories in your current directory (there may be none)::
 
 With arguments
 ^^^^^^^^^^^^^^
+
 Many commands accept *arguments*, or *parameters*, which can affect the behavior
 of a command. For example, the most common way to use the ``cd`` command is to
 pass it a single argument that specifies which directory to change to. For
@@ -139,9 +147,9 @@ your new current directory.
 
 With options
 ^^^^^^^^^^^^
+
 Most commands accept *options*, also known as *flags* or *switches*, that modify
-the
-behavior of the command. As they are special arguments, options follow a
+the behavior of the command. As they are special arguments, options follow a
 command, and are indicated by a single ``-`` character followed by one or more
 options, which are represented by individual upper- or lower-case letters.
 Additionally, some options start with ``--``, followed by a single,
@@ -172,6 +180,7 @@ Note that the listing includes the hidden ``.`` and ``..`` directories in the li
 
 With options and arguments
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 Options and arguments can almost always be combined, when running commands.
 
 For example, you could check the contents of ``/home``, regardless of your
@@ -184,80 +193,88 @@ that indicates which file or directory to list. This should print a detailed
 listing of the ``/home`` directory, which should contain the home directories of
 all of the normal users on the server.
 
-Environment variables
----------------------
-Environment variables are named values that are used to change how commands and
-processes are executed. When you first log in to a server, several environment
-variables will be set according to a few configuration files by default.
+Command help
+------------
 
-View all environment variables
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-To view all of the environment variables that are set for a particular terminal
-session, run the ``env`` command::
+Often, you may know the command that you want to execute, but may not know
+exactly the combination of arguments and options to give the desired results. In
+that case, there are a variety of ways to get information about commands in a
+Linux system.
 
-  $ env
+``man``
+^^^^^^^
 
-There will likely be a lot of output, but try and look for ``PATH`` entry::
+*Manual pages*, or *man pages* for short, are the traditional way to get more
+information about a command. To view the man page for the command ``ls``, type::
 
-  PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
+  $ man ls
 
-The ``PATH`` environment variable is a colon-delimited list of directories where
-the shell will look for executable programs or scripts when a command is issued.
-For example, the ``env`` command is located in ``/usr/bin``, and we are able to
-execute it without specifying its fully-qualified location because its path is
-in the ``PATH`` environment variable.
+which will open the *pager application* to display something like::
 
-View the value of a variable
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-The value of an environment variable can be retrieved by prefixing the variable
-name with a ``$``. Doing so will expand the referenced variable to its value.
+  LS(1)                            User Commands                           LS(1)
 
-For example, to print out the value of the ``PATH`` variable, you may use the
-``echo`` command::
+  NAME
+         ls - list directory contents
 
-  $ echo $PATH
+  SYNOPSIS
+         ls [OPTION]... [FILE]...
 
-Or you could use the ``HOME`` variable, which is set to your user's home
-directory by default, to change to your home directory like this::
+  DESCRIPTION
+         List  information  about  the FILEs (the current directory by default).
+         Sort entries alphabetically if none of -cftuvSUX nor --sort  is  speci‐
+         fied.
+  . . .
 
-  $ cd $HOME
+It is possible to navigate text with the arrow keys, but the pager application
+used to display man pages typically provides faster ways of moving around a
+document. You can use the ``j`` and ``k`` down and up, respectively.
 
-If you try to access an environment variable that hasn't been set, it will be
-expanded to nothing; an empty string.
+These direction keys may seem confusing and unintuitive at first, but they were
+chosen for a reason. They are in the home-row of a QWERTY keyboard. This means
+that a user's hand moves from the resting position significantly less than with
+the traditional arrow keys.
 
-Setting environment variables
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Now that you know how to view your environment variables, you should learn how
-to set them.
+``info``
+^^^^^^^^
 
-To set an environment variable, all you need to do is start with a variable
-name, followed immediately by an ``=`` sign, followed immediately by its desired
-value::
+Some commands, particularly those maintained as part of the GNU utilities, offer
+man pages, but also include more complete documentation in the form of info
+pages.
 
-  $ VAR=value
+To view the info page for the command ``ls``, which is a GNU utility, type::
 
-Note that if you set an existing variable, the original value will be
-overwritten. If the variable did not exist in the first place, it will be
-created.
+  $ info ls
 
-Bash includes a command called ``export`` which exports a variable so it will be
-inherited by child processes. In simple terms, this allows you to use scripts
-that reference an exported environment variable from your current session. If
-you're still unclear on what this means, don't worry about it for now.
+which will open the info application to display something like::
 
-You can also reference existing variables when setting a variable. For example,
-if you installed an application to ``/opt/app/bin``, you could add that
-directory to the end of your ``PATH`` environment variable with this command::
+  File: coreutils.info,  Node: ls invocation,  Next: dir invocation,  Up:
+  Directo\
+  ry listing
 
-  $ export PATH=$PATH:/opt/app/bin
+  10.1 'ls': List directory contents
+  ==================================
 
-Now verify that ``/opt/app/bin`` has been added to the end of your ``PATH``
-variable with ``echo``::
+  The 'ls' program lists information about files (of any type, including
+  directories).  Options and file arguments can be intermixed arbitrarily,
+  as usual.
 
-  $ echo $PATH
+This is not the standard pager application, but rather a distinct one for
+displaying documentation in the texinfo format. As such, it has its own keyboard
+navigation.
 
-Keep in mind that setting environment variables in this way only sets them for
-your current session. This means if you log out or otherwise change to another
-session, the changes you made to the environment will not be preserved. There is
-a way to permanently change environment variables, but this will be covered in a
-later tutorial.
+``--help``
+^^^^^^^^^^
+
+Some commands, especially those installed by you, the user, may not have formal
+documentation in man or info format. In those cases, there are a few things to
+try to get more information about the command, which I typically try in this
+order:
+
+#. Try executing the command with each of the following options:
+
+   * ``-h``
+   * ``--help``
+
+#. Do a web search for the command
+#. Look at the source code to see if any documentation is available there or if
+   the code is commented.

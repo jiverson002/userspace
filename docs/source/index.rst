@@ -17,33 +17,25 @@ are unfamiliar, then by all means grab a cup of coffee and dive into the
 documentation contained herein. As the guide evolves, material will be added
 with more background and depth.
 
+  * **Getting started with the terminal**:
+    :doc:`terminal/basics` |
+    :doc:`terminal/navigation` |
+    :doc:`terminal/file-management`
+  * **Advanced terminal usage**:
+    :doc:`terminal/automation` |
+    :doc:`terminal/remote-access`
+  * **Programming languages**:
+    :doc:`Python <programming/python>` |
+    :doc:`Ruby <programming/ruby>`
+  * **Development tools**:
+    :doc:`Git <programming/git>`
+
 .. toctree::
    :hidden:
    :caption: User guide
 
    user-guide/todos
    user-guide/help
-
-..
-  First steps
-  -----------
-
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Summum ením bonum
-  exposuit vacuitatem doloris; Nos paucis ad haec additis finem faciamus
-  aliquando; Duo Reges: constructio interrete. Aufert enim sensus actionemque
-  tollit omnem. Quod non faceret, si in voluptate summum bonum poneret. Neminem
-  videbis ita laudatum, ut artifex callidus comparandarum voluptatum diceretur.
-  Quo studio Aristophanem putamus aetatem in litteris duxisse? Nihilo beatiorem
-  esse Metellum quam Regulum.
-
-  * **Getting started**:
-    :doc:`terminal/basics` |
-    :doc:`terminal/navigation` |
-    :doc:`terminal/file-management`
-
-  * **Importing your existing documentation**:
-    :doc:`Automation <terminal/automation>` |
-    :doc:`terminal/remote-access`
 
 .. toctree::
    :hidden:
@@ -54,23 +46,6 @@ with more background and depth.
    terminal/file-management
    terminal/automation
    terminal/remote-access
-
-..
-  Programming guides
-  ------------------
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Summum ením bonum
-  exposuit vacuitatem doloris; Nos paucis ad haec additis finem faciamus
-  aliquando; Duo Reges: constructio interrete. Aufert enim sensus actionemque
-  tollit omnem. Quod non faceret, si in voluptate summum bonum poneret. Neminem
-  videbis ita laudatum, ut artifex callidus comparandarum voluptatum diceretur.
-  Quo studio Aristophanem putamus aetatem in litteris duxisse? Nihilo beatiorem
-  esse Metellum quam Regulum.
-
-  * **Languages**:
-    :doc:`Python <programming/python> |
-    :doc:`Ruby <programming/ruby>`
-  * **Development tools**:
-    :doc:`Git <programming/git>`
 
 .. toctree::
    :hidden:

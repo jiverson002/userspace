@@ -1,13 +1,7 @@
 .. highlight:: none
 
 .. note::
-   The following article is a adaptation of `How To Create a Pull Request on
-   GitHub
-   <https://www.digitalocean.com/community/tutorials/how-to-create-a-pull-request-on-github>`_
-   by `Lisa Tagliaferri
-   <https://www.digitalocean.com/community/users/ltagliaferri>`_, available
-   under a `Creative Commons Attribution-NonCommercial-ShareAlike 4.0
-   International License <https://creativecommons.org/licenses/by-nc-sa/4.0/>`_.
+   The following article is an adaptation of `How To Create a Pull Request on GitHub <https://www.digitalocean.com/community/tutorials/how-to-create-a-pull-request-on-github>`_ by `Lisa Tagliaferri <https://www.digitalocean.com/community/users/ltagliaferri>`_, available under a `Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License <https://creativecommons.org/licenses/by-nc-sa/4.0/>`_.
 
 GitHub
 ------

@@ -1,369 +1,338 @@
 .. highlight:: none
 
 .. note::
-   The following article is a adaptation of `How To Use Git: A Reference Guide
-   <https://www.digitalocean.com/community/cheatsheets/how-to-use-git-a-reference-guide>`_
-   by `Lisa Tagliaferri
-   <https://www.digitalocean.com/community/users/ltagliaferri>`_, available
-   under a `Creative Commons Attribution-NonCommercial-ShareAlike 4.0
-   International License <https://creativecommons.org/licenses/by-nc-sa/4.0/>`_.
+   The following article is an adaptation of `How To Use Git Effectively <https://www.digitalocean.com/community/tutorials/how-to-use-git-effectively>`_ and `How To Use Git Branches <https://www.digitalocean.com/community/tutorials/how-to-use-git-branches>`_ by Jason Kurtz, available under a `Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License <https://creativecommons.org/licenses/by-nc-sa/4.0/>`_.
 
 Basics
 ------
 
-Teams of developers and open-source software maintainers typically manage their
-projects through Git, a distributed version control system that supports
-collaboration.
+Before using git for your development, it's a good idea to plan out your
+workflow. The workflow decision is typically based on the size and scale of your
+project. To gain a basic understanding of git for now, a simple, single-branch
+workflow will suffice. By default, the first branch on any git project is called
+``master``. Later in this tutorial, you will learn how to create other branches.
 
-This cheat sheet-style guide provides a quick reference to commands that are
-useful for working and collaborating in a Git repository.
+Let's create our first project and call it ``testing``. (If you already have a
+project that you want to import to git you can skip down to :ref:`init`.)
 
-There are many more commands and variations that you may find useful as part of
-your work with Git. To learn more about all of your available options, you can
-run::
+Just like you want to have a good, clean work environment, the same idea applies
+to where you do your coding, especially if you're going to contribute to a
+number of projects at the same time. A good suggestion might be to have a
+directory called git in your home directory which has subdirectories for each of
+your individual projects.
 
-  $ git --help
+The first thing we need to do is create our workspace environment::
 
-You can also read more about Git and look at Git's documentation from the
-`official Git website <https://git-scm.com/>`_.
+  $ mkdir -p ~/git/testing
+  $ cd ~/git/testing
 
-Set up and initialization
-^^^^^^^^^^^^^^^^^^^^^^^^^
+The above commands will accomplish two things: 1) it creates a directory called
+``git`` in our home directory and then creates a subdirectory inside of that
+called ``testing`` (this is where our project will actually be stored) and 2) it
+brings us to our project's base directory.
 
-Check your Git version with the following command, which will also confirm that
-Git is installed.
+Once inside that directory, we need to create a few files that will be in our
+project. In this step, you can either follow along and create a few dummy files
+for testing purposes or you can create files/directories you wish that are going
+to be part of your project.
 
-.. code-block:: none
+We are going to create a test file to use in our project::
 
-  $ git --version
+  $ touch file
 
-You can initialize your current working directory as a Git repository with
-``init``.
+.. _init:
 
-.. code-block:: none
+``init``
+^^^^^^^^
+
+Once all your project files are in your workspace, you need to start *tracking*
+your files with git. To do this, you must tell git that you want to use your
+current directory as a git environment::
 
   $ git init
+  Initialized empty Git repository in /home/user/git/testing/.git/
 
-To copy an existing Git repository hosted remotely, you'll use ``git clone``
-with the repo's URL or server location (in the latter case you will use
-``ssh``).
+From this point forward the ``testing`` project directory is considered a *Git
+repository*, or *repo* for short.
 
-.. code-block:: none
+``status``
+^^^^^^^^^^
 
-  $ git clone https://www.github.com/username/repo-name
-
-Show your current Git directory's remote repository.
-
-.. code-block:: none
-
-  $ git remote
-
-For a more verbose output, use the ``-v`` flag.
-
-.. code-block:: none
-
-  $ git remote -v
-
-Add the Git upstream, which can be a URL or can be hosted on a server (in the
-latter case, connect with ``ssh``).
-
-.. code-block:: none
-
-  $ git remote add upstream https://www.github.com/username/repo-name
-
-Staging
-^^^^^^^
-
-When you've modified a file and have marked it to go in your next commit, it is
-considered to be a staged file.
-
-Check the status of your Git repository, including files added that are not
-staged, and files that are staged.
-
-.. code-block:: none
+During the course of the development of your project, you may wish to know the
+state of your project with respect to its underlying Git repository. This state
+can be checked with the following::
 
   $ git status
+  On branch master
 
-To stage modified files, use the ``add`` command, which you can run multiple
-times before a commit. If you make subsequent changes that you want included in
-the next commit, you must run ``add`` again.
+  No commits yet
 
-You can specify the specific file with ``add``.
+  Untracked files:
+    (use "git add <file>..." to include in what will be committed)
+      file
 
-.. code-block:: none
+  nothing added to commit but untracked files present (use "git add" to track)
 
-  $ git add my_script.py
+The output tells us a few things. First, we are on the branch ``master``.
+You can read more about branches `later <branches>` in this article. Second,
+that we have not made any commits yet, but we will make our first very soon! An
+finally, that there are some *untracked* files in our repo, in this case, just
+one. Untracked files are files whose history is not kept as part of the repo.
 
-With ``.`` you can add all files in the current directory including files that
-begin with a ``.``.
+``add``
+^^^^^^^
 
-.. code-block:: none
+To start *tracking* a file, i.e., have its history maintained in the repo, we
+must add said files to the repo. The following will add all files and
+directories in your project to your newly created repo::
 
-    git add .
+  $ git add .
 
-You can remove a file from staging while retaining changes within your working
-directory with ``reset``.
+In this case, no output is good output. Unfortunately, git does not always
+inform you if something worked. If we check the status of our repo again, we
+will see something slightly different than before::
 
-.. code-block:: none
+  $ git status
+  On branch master
 
-  $ git reset my_script.py
+  No commits yet
 
-Committing
+  Changes to be committed:
+    (use "git rm --cached <file>..." to unstage)
+      new file:   file
+
+Now we see that git is reporting no untracked files, but there is a ``new
+file`` in the repo.
+
+``commit``
 ^^^^^^^^^^
 
-Once you have staged your updates, you are ready to commit them, which will
-record changes you have made to the repository.
+Adding files alone does not mean that the history of changes to them is being
+tracked. In fact, any time that you have made changes to your code that you wish
+to be eternalized in the history of your project, you must *commit* these
+changes to the repo.
 
-To commit staged files, you'll run the ``commit`` command with your meaningful
-commit message so that you can track commits.
+Every time you commit changes, you need to write a commit message. A commit
+message is a short message explaining the changes that you've made. It is
+required before sending your coding changes off (which is called a push) and it
+is a good way to communicate to your co-developers what to expect from your
+changes.
 
-.. code-block:: none
+Commit messages are generally rather short, between one and two sentences
+explaining what your change did. It is good practice to commit each individual
+change before you do a push. You can push as many commits as you like. The only
+requirement for any commit is that it involves at least one file and it has a
+message. A push must have at least one commit.
 
-  $ git commit -m "Commit message"
+Continuing with our example, we are going to create the message for our initial
+commit::
 
-You can condense staging all tracked files with committing them in one step.
+  $ git commit -m "Initial Commit"
+  [master (root-commit) c1d1b05] Initial commit
+  1 file changed, 0 insertions(+), 0 deletions(-)
+  create mode 100644 file
 
-.. code-block:: none
+The ``-m`` flag signifies that our commit message (in this case ``"Initial
+Commit"``) is going to follow.
 
-  $ git commit -am "Commit message"
+``remote``
+^^^^^^^^^^
 
-If you need to modify your commit message, you can do so with the ``--amend``
-flag.
+Up until this point, we have done everything on our local server. That's
+certainly an option to use git locally, if you want to have any easy way to have
+version control of your files. If you want to work with a team of developers,
+however, you're going to need to push changes to a remote server. This section
+will explain how to do that.
 
-.. code-block:: none
+The first step to being able to push code to a remote server is providing the
+URL where the repository lives and giving it a name. To configure a *remote
+repository*, or *remote* for short::
 
-  $ git commit --amend -m "New commit message"
+  $ git remote add origin git@git.domain.tld/repository.git
+  $ git remote -v
+  origin	git@git.domain.tld/repository.git (fetch)
+  origin	git@git.domain.tld/repository.git (push)
 
-Branches
+The first command adds a remote, called ``origin``, and sets the URL to
+``git@git.domain.tld/repository.git``. You can name your remote whatever you'd
+like, but the URL needs to point to an actual remote repository. For example, if
+you wanted to push code to GitHub, you would need to use the repository URL that
+they provide.
+
+The second command lists any remotes that are configure for the repo. A repo may
+have many remotes.
+
+``push``
 ^^^^^^^^
 
-A branch in Git is a movable pointer to one of the commits in the repository, it
-allows you to isolate work and manage feature development and integration. You
-can learn more about branches by reading the `Git branch documentation
-<https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell>`_.
-
-List all current branches with the ``branch`` command. An asterisk (``*``) will
-appear next to your currently active branch.
-
-.. code-block:: none
-
-  $ git branch
-
-Create a new branch. You will remain on your currently active branch until you
-switch to the new one.
-
-.. code-block:: none
-
-  $ git branch new-branch
-
-Switch to any existing branch and check it out into your current working
-directory.
-
-.. code-block:: none
-
-  $ git checkout another-branch
-
-You can consolidate the creation and checkout of a new branch by using the
-``-b`` flag.
-
-.. code-block:: none
-
-  $ git checkout -b new-branch
-
-Rename your branch name.
-
-.. code-block:: none
-
-  $ git branch -m current-branch-name new-branch-name
-
-Merge the specified branch's history into the one you're currently working in.
-
-.. code-block:: none
-
-  $ git merge branch-name
-
-Abort the merge, in case there are conflicts.
-
-.. code-block:: none
-
-  $ git merge --abort
-
-You can also select a particular commit to merge with ``cherry-pick`` with the
-string that references the specific commit.
-
-.. code-block:: none
-
-  $ git cherry-pick f7649d0
-
-When you have merged a branch and no longer need the branch, you can delete it.
-
-.. code-block:: none
-
-  $ git branch -d branch-name
-
-If you have not merged a branch to master, but are sure you want to delete it,
-you can **force** delete a branch.
-
-.. code-block:: none
-
-  $ git branch -D branch-name
-
-Collaborate and update
-^^^^^^^^^^^^^^^^^^^^^^
-
-To download changes from another repository, such as the remote upstream, you'll
-use ``fetch``.
-
-.. code-block:: none
-
-  $ git fetch upstream
-
-Merge the fetched commits.
-
-.. code-block:: none
-
-  $ git merge upstream/master
-
-Push or transmit your local branch commits to the remote repository branch.
-
-.. code-block:: none
+Once you have a remote configured, you are now able to *push* your code. You can
+push code to a remote by typing the following::
 
   $ git push origin master
+  Counting objects: 4, done.
+  Delta compression using up to 2 threads.
+  Compressing objects: 100% (2/2), done.
+  Writing objects: 100% (3/3), 266 bytes, done.
+  Total 3 (delta 1), reused 1 (delta 0)
+  To git@git.domain.tld/repository.git
+     0e78fdf..e6a8ddc  master -> master
 
-Fetch and merge any commits from the tracking remote branch.
+``git push`` tells git that we want to push our changes, ``origin`` is the name
+of our newly-configured remote and ``master`` is the name of the branch.
 
-.. code-block:: none
+In the future, when you have commits that you want to push to the server, you
+can simply type ``git push``.
 
-  $ git pull
-
-Inspecting
+``branch``
 ^^^^^^^^^^
+A branch, at its core, is a unique series of code changes with a unique name.
+Each repository can have one or more branches. By default, the first branch is
+called ``master``.
 
-Display the commit history for the currently active branch.
+Prior to creating new branches, we may want to see all the branches that exist.
+We can view all existing branches by typing the following::
 
-.. code-block:: none
+  $ git branch -a
+  * master
+  remotes/origin/master
 
-  $ git log
+Adding the ``-a`` flag tells git that we want to see all branches that exist,
+including ones that we do not have in our local workspace.
 
-Show the commits that changed a particular file. This follows the file
-regardless of file renaming.
+The asterisk next to ``master`` in the first line of output indicates that we
+are currently on that branch. The second line simply indicates that on our
+remote, named origin, there is a single branch, also called master.
 
-.. code-block:: none
+Now that we have a well established project, we may wish to improve the way that
+we manage the source code. One small, but impactful improvement, is to create a
+second branch in addtion to ``master``. We will call this branch ``develop`` and
+it is where we will actively develop the project. Only after we are satisfied
+with changes made to branch ``develop`` will we merge them into branch
+``master``. This means that branch ``master`` will "*always*" contain code that
+is production quality.
 
-  $ git log --follow my_script.py
+To create a new branch named ``develop``, type the following::
 
-Show the commits that are on one branch and not on the other. This will show
-commits on a-branch that are not on b-branch.
+  $ git branch develop
 
-.. code-block:: none
+In the case of a branch by that name already existing, git would tell us so::
 
-  $ git log a-branch..b-branch
+  fatal: A branch named 'develop' already exists.
 
-Look at reference logs (``reflog``) to see when the tips of branches and other
-references were last updated within the repository.
-
-.. code-block:: none
-
-  $ git reflog
-
-Show any object in Git via its commit string or hash in a more human-readable
-format.
-
-.. code-block:: none
-
-  $ git show de754f5
-
-Show changes
+``checkout``
 ^^^^^^^^^^^^
 
-The ``git diff`` command shows changes between commits, branches, and more. You
-can read more fully about it through the `Git diff documentation
-<https://git-scm.com/docs/git-diff>`_.
+You can switch back and forth between your two branches, by using the ``git
+checkout`` command::
 
-Compare modified files that are on the staging area.
+  $ git checkout master
 
-.. code-block:: none
-
-  $ git diff --staged
-
-Display the diff of what is in ``a-branch`` but is not in ``b-branch``.
+or
 
 .. code-block:: none
 
-  $ git diff a-branch..b-branch
+  $ git checkout develop
+  Switched to branch 'master'
 
-Show the diff between two specific commits.
-
-.. code-block:: none
-
-  $ git diff 61ce3e6..e221d9c
-
-Stashing
-^^^^^^^^
-
-Sometimes you'll find that you made changes to some code, but before you finish
-you have to begin working on something else. You're not quite ready to commit
-the changes you have made so far, but you don't want to lose your work. The
-``git stash`` command will allow you to save your local modifications and revert
-back to the working directory that is in line with the most recent ``HEAD``
-commit.
-
-Stash your current work.
+If you try to switch to a branch that doesn't exist, such as
 
 .. code-block:: none
 
-  $ git stash
+  $ git checkout nosuchbranch
+  error: pathspec 'nosuchbranch' did not match any file(s) known to git.
 
-See what you currently have stashed.
+Now that we have multiple branches, we need to put them to good use. In our
+scenario, we are going to use our ``develop`` branch for testing out our changes
+and the ``master`` branch for releasing them to the public.
 
-.. code-block:: none
+To illustrate this process, we need to switch back to our ``develop`` branch::
 
-  $ git stash list
+  $ git checkout develop
 
-Your stashes will be named ``stash@{0}``, ``stash@{1}``, and so on.
-
-Show information about a particular stash.
-
-.. code-block:: none
-
-  $ git stash show stash@{0}
-
-To bring the files in a current stash out of the stash while still retaining the
-stash, use ``apply``.
+On this branch, we are going to create a new blank file, named ``dosiero``.
+Until we merge it to the ``master`` branch (in the following step), it will not
+exist there.
 
 .. code-block:: none
 
-  $ git stash apply stash@{0}
+  $ touch dosiero
+  $ git status
+  On branch develop
+  Untracked files:
+    (use "git add <file>..." to include in what will be committed)
+      dosiero
 
-If you want to bring files out of a stash, and no longer need the stash, use
-``pop``.
+  nothing added to commit but untracked files present (use "git add" to track)
+  $ git add dosiero
+  $ git status
+  On branch develop
+  Changes to be committed:
+    (use "git restore --staged <file>..." to unstage)
+      new file:   dosiero
 
-.. code-block:: none
+  $ git commit -m "Adds the file dosiero"
+  [develop 3922da9] Adds the file dosiero
+   1 file changed, 0 insertions(+), 0 deletions(-)
+    create mode 100644 dosiero
 
-  $ git stash pop stash@{0}
+The above set of commands will create a blank file named ``dosiero``, add it
+to be tracked in the repo, and commit it to the history on branch ``develop``.
 
-If you no longer need the files saved in a particular stash, you can ``drop``
-the stash.
+The ``git checkout`` command can be used to create a new branch and switch to it
+immediately. For example, the following sequence of commands::
 
-.. code-block:: none
+  $ git branch develop
+  $ git checkout develop
+  Switched to branch 'develop'
 
-  $ git stash drop stash@{0}
+can be accomplished with a single invocation of the ``git checkout`` command by
+passing the ``-b`` flag as so::
 
-If you have multiple stashes saved and no longer need to use any of them, you
-can use ``clear`` to remove them.
+  $ git checkout -b develop
+  Switched to a new branch 'develop'
 
-.. code-block:: none
+Notice the message reported by git now indicates that the branch is a ``new
+branch``.
 
-  $ git stash clear
+``merge``
+^^^^^^^^^
 
-Ignoring files
-^^^^^^^^^^^^^^
+The interesting part comes after we switch back to our master branch, which we
+can do with the git checkout command::
 
-If you want to keep files in your local Git directory, but do not want to commit
-them to the project, you can add these files to your ``.gitignore`` file so that
-they do not cause conflicts.
+  $ git checkout master
+  Switched to branch 'master'
 
-Use a text editor to add files to the ``.gitignore`` file.
+Now if we execute ``ls``, it will appear that our new file is missing::
 
-To see examples of ``.gitignore`` files, you can look at `GitHub's gitignore
-template repo <https://github.com/github/gitignore>`_.
+  $ ls
+  file
+
+However, it's not missing --- it's just on our ``develop`` branch and we are on
+our ``master`` branch.
+
+In this scenario, this file represents any change to any file (or a whole new
+file) that has passed all testing on our development branch, and is ready to be
+in production. The process of moving code between branches (often from
+development to production) is known as merging.
+
+It is important to remember when merging, that we want to be on the branch that
+we want to merge to. In this case, we want to merge from our ``develop`` branch,
+where the ``dosiero`` file exists, to our ``master`` branch.
+
+Keeping that in mind, considering that we are already on the ``master`` branch,
+all we have to do is run the ``git merge`` command. To merge the changes from
+the ``develop`` branch to the ``master`` branch, type the following::
+
+  $ git merge develop
+  Updating c1d1b05..ef52230
+  Fast-forward
+   dosiero | 0
+   1 file changed, 0 insertions(+), 0 deletions(-)
+   create mode 100644 dosiero
+
+Running the ``ls`` command again will confirm that our ``dosiero`` file is now
+on our ``master`` branch::
+
+  $ ls
+  dosiero file

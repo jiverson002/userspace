@@ -1,13 +1,7 @@
 .. highlight:: none
 
 .. note::
-   The following article is a adaptation of `How To Contribute to Open Source:
-   Getting Started with Git
-   <https://www.digitalocean.com/community/tutorials/how-to-contribute-to-open-source-getting-started-with-git>`_
-   by `Lisa Tagliaferri
-   <https://www.digitalocean.com/community/users/ltagliaferri>`_, available
-   under a `Creative Commons Attribution-NonCommercial-ShareAlike 4.0
-   International License <https://creativecommons.org/licenses/by-nc-sa/4.0/>`_.
+   The following article is an adaptation of `How To Contribute to Open Source: Getting Started with Git <https://www.digitalocean.com/community/tutorials/how-to-contribute-to-open-source-getting-started-with-git>`_ by `Lisa Tagliaferri <https://www.digitalocean.com/community/users/ltagliaferri>`_, available under a `Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License <https://creativecommons.org/licenses/by-nc-sa/4.0/>`_.
 
 Git
 ===
@@ -42,3 +36,4 @@ The Git documentation is organized as follows:
 
    git/basics
    git/github
+   git/cheat-sheet
