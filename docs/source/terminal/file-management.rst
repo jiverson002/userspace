@@ -233,3 +233,107 @@ type::
 .. warning::
   Once again, it is worth reiterating that these are permanent actions. Be
   entirely sure that the command you typed is the one that you wish to execute.
+
+``find``
+--------
+As you have probably experienced, keeping files and directories organized and
+remembering the locations of specific ones is a hard task. Many times, we would
+like to find the location of a particular file or directory. One command line
+application for doing this is ``find``. To search for things named ``data`` in
+within the directory ``~/src``, type::
+
+  $ find ~/src -name data
+  /home/jiverson002/src/cpp/project1/data
+  /home/jiverson002/src/cpp/project2/data
+  /home/jiverson002/src/data
+
+This of course, assumes that you have a directory called ``src`` in your home
+directory.
+
+Unlike many other command line utilities, the behavior of ``find`` is
+recursive by default. If this is not the desired behavior, the argument
+``-maxdepth`` can be used to control the depth of recursion. To search only in
+the directories immediately contained in ``~/src``, type::
+
+  $ find ~/src -maxdepth 1 -name data
+  /home/jiverson002/src/data
+
+.. note::
+
+   The location of the argument ``maxdepth`` is significant. It must be supplied
+   after the directory to search, but before the *filter* arguments.
+
+In the above examples, ``find`` does not distinguish between files and
+directories named ``data``. If you are only interested in a specific type of
+result, ``find`` accepts other filters on the results that it returns. So to
+limit the results to files named ``data``::
+
+  $ find ~/src -name data -type f
+  /home/jiverson002/src/cpp/project1/data
+  /home/jiverson002/src/cpp/project2/data
+
+or directories::
+
+  $ find ~/src -name data -type d
+  /home/jiverson002/src/data
+
+Besides searching for a file or directory with a given name, the ``find``
+command can do many other amazing things, like executing a given command for
+files or directories included in the results::
+
+  $ find ~/src -name data -type d -exec touch {} \;
+
+``grep``
+--------
+
+Another way to search files is to look for a file that contains a particular
+word, phrase, or line of source code. ``grep`` is a program that allows you to
+search a list of files, provided as command line arguments, for any files that
+contain a given *regular expression*. The topic of regular expressions is beyond
+the scope of this article, so for now, we restrict our discussion to literal
+matches, i.e., files that contain exactly the word or phrase we are looking for.
+
+To search for the word ``git`` in the file named ``index.rst`` in the current
+working directory, type::
+
+  $ grep git index.rst
+  31:    :doc:`Git <programming/git>`
+  56:   Git <programming/git>
+  63:on `GitHub <https://github.com>`_ at https://github.com/jiverson002/userspace.
+  67:<programming/git>` to learn more.
+
+By default, ``grep`` will output the lines found in the file that contain the
+word ``git`` along with their corresponding line numbers. So in this case, four
+lines in the file ``index.rst`` contained the word ``git``.
+
+To search for a phrase (words separated by spaces), requires the use of
+quotations marks (``'`` or ``"``), since command line arguments are separated by
+spaces in Linux and thus, a phrase would be understand on the command line as
+multiple arguments instead of a single phrase. The quotations marks will tell
+the shell that the space separated words should be interpreted as a single
+argument. So to search for ``computing resources``, type::
+
+  $ grep 'computing resources' index.rst
+  4:The computing resources at CSB/SJU have impressive potential. However, my
+  13:computing resources. It is not meant to be read from beginning to end, but
+
+The ability to search single files can be extremely useful, but what makes
+``grep`` even more powerful is its ability to search for a word or phrase in a
+collection of files. Suppose that your were looking for the definition of the
+function ``to_canonical`` in your Ruby project, but you weren't sure which
+source file that it was contained in. ``grep``, like many other command line
+utilities, is capable of applying an action recursively, that is, to a directory
+and everything that it contains. So to search all files contained in the current
+working directory for the definition of the function ``to_canonical`` we could
+type::
+
+  $ grep -R 'def to_canonical' .
+  ./core/parser.rb:91:        def to_canonical(str)
+
+In this case, since ``grep`` was searching more than one file, it reported the
+file name where the match was found in addition to the line number. Here is
+another example, where multiple functions are found with a given name::
+
+  $ grep -R 'def parse' .
+  ./core/parser.rb:28:        def parse(filename, options)
+  ./cli/parse.rb:14:    def parse(filename)
